@@ -2,6 +2,7 @@ module App exposing (..)
 
 import Html exposing (Html, div, text, program)
 import Html.Events exposing(onClick)
+import Html.Attributes exposing(style)
 
 -- MODEL
 
@@ -17,7 +18,7 @@ type alias Game =
     }
 
 game =
-    Game ["1", "2", "3", "5", "8", "13", "21"] Nothing
+    Game ["1", "2", "3", "5", "8", "13", "21", "☕", "?"] Nothing
 init : ( Game , Cmd Msg )
 init =
     ( game, Cmd.none )
@@ -34,22 +35,51 @@ type Msg
 
 card : Card -> Html Msg
 card c =
-    div [ onClick (DrawCard c) ]
+    div [
+            style [
+                ("flex", "1 30%"),
+                ("background-color", "#39f"),
+                ("margin", "3px"),
+                ("display", "flex"),
+                ("flex-direction", "column"),
+                ("justify-content", "center"),
+                ("font-size", "5rem"),
+                ("color", "white")
+            ],
+            onClick (DrawCard c)
+        ]
         [ text c ]
 
 
 deck : Deck -> Html Msg
 deck d =
-    div []
+    div [
+            style [
+                ("display", "flex"),
+                ("flex-flow", "row wrap"),
+                ("justify-content", "center"),
+                ("text-align", "center")
+            ]
+        ]
         (List.map card d)
 
 selectedCard : Card -> Html Msg
 selectedCard c =
-    div [ onClick Discard ]
-        [
-         text "Selected",
-         text c
+    div [
+            style [
+                ("display", "flex"),
+                ("flex-direction", "column"),
+                ("justify-content", "center"),
+                ("height", "100%"),
+                ("flex", "1 1 auto"),
+                ("background-color", "#39f"),
+                ("font-size", "10rem"),
+                ("color", "white"),
+                ("text-align", "center")
+            ],
+            onClick Discard
         ]
+        [ text c ]
 view : Game -> Html Msg
 view game =
     case game.currentCard of
@@ -57,8 +87,6 @@ view game =
         Just c -> selectedCard c
 
 -- UPDATE
-
-
 update : Msg -> Game -> ( Game, Cmd Msg )
 update msg game =
     case msg of
@@ -68,7 +96,6 @@ update msg game =
             ( Game game.deck (Just c), Cmd.none )
         Discard ->
             ( Game game.deck Nothing, Cmd.none )
-
 
 
 -- SUBSCRIPTIONS
