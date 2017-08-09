@@ -18,7 +18,7 @@ type alias Game =
     }
 
 game =
-    Game ["1", "2", "3", "5", "8", "13", "21", "☕", "?"] Nothing
+    Game ["1", "2", "3", "5", "8", "13", "21", "||", "?"] Nothing
 init : ( Game , Cmd Msg )
 init =
     ( game, Cmd.none )
