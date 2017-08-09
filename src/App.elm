@@ -43,7 +43,7 @@ card c =
                 ("display", "flex"),
                 ("flex-direction", "column"),
                 ("justify-content", "center"),
-                ("font-size", "5rem"),
+                ("font-size", "15rem"),
                 ("color", "white")
             ],
             onClick (DrawCard c)
@@ -73,7 +73,7 @@ selectedCard c =
                 ("height", "100%"),
                 ("flex", "1 1 auto"),
                 ("background-color", "#39f"),
-                ("font-size", "10rem"),
+                ("font-size", "50rem"),
                 ("color", "white"),
                 ("text-align", "center")
             ],

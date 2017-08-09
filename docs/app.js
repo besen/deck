@@ -8457,7 +8457,7 @@ var _user$project$App$selectedCard = function (c) {
 										_0: {ctor: '_Tuple2', _0: 'background-color', _1: '#39f'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'font-size', _1: '10rem'},
+											_0: {ctor: '_Tuple2', _0: 'font-size', _1: '50rem'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'color', _1: 'white'},
@@ -8515,7 +8515,7 @@ var _user$project$App$card = function (c) {
 										_0: {ctor: '_Tuple2', _0: 'justify-content', _1: 'center'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'font-size', _1: '5rem'},
+											_0: {ctor: '_Tuple2', _0: 'font-size', _1: '15rem'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'color', _1: 'white'},
