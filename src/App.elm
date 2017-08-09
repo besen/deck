@@ -1,7 +1,7 @@
 module App exposing (..)
 
 import Html exposing (Html, div, text, program)
-
+import Html.Events exposing(onClick)
 
 -- MODEL
 
@@ -17,27 +17,24 @@ type alias Game =
     }
 
 game =
-    Game ["1", "2", "3", "5", "8", "13", "21"] (Just "21")
-    --Game ["1", "2", "3", "5", "8", "13", "21"] Nothing
+    Game ["1", "2", "3", "5", "8", "13", "21"] Nothing
 init : ( Game , Cmd Msg )
 init =
     ( game, Cmd.none )
-
-
 
 -- MESSAGES
 
 
 type Msg
     = NoOp
-
-
+    | DrawCard Card
+    | Discard
 
 -- VIEW
 
 card : Card -> Html Msg
 card c =
-    div []
+    div [ onClick (DrawCard c) ]
         [ text c ]
 
 
@@ -48,7 +45,7 @@ deck d =
 
 selectedCard : Card -> Html Msg
 selectedCard c =
-    div []
+    div [ onClick Discard ]
         [
          text "Selected",
          text c
@@ -67,17 +64,17 @@ update msg game =
     case msg of
         NoOp ->
             ( game, Cmd.none )
+        DrawCard c ->
+            ( Game game.deck (Just c), Cmd.none )
+        Discard ->
+            ( Game game.deck Nothing, Cmd.none )
 
 
 
 -- SUBSCRIPTIONS
-
-
 subscriptions : Game -> Sub Msg
 subscriptions game =
     Sub.none
-
-
 
 -- MAIN
 
